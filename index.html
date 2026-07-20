@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Emergency Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>🚨 AI Emergency Assistant</h1>
+
+    <form method="POST">
+        <input type="text" id="message" name="message" placeholder="Describe your problem..." required>
+
+        <button type="button" onclick="startVoice()">🎤 Speak</button>
+        <button type="submit">Check</button>
+    </form>
+
+    {% if result %}
+        <div class="result">
+            <p>{{ result }}</p>
+        </div>
+    {% endif %}
+</div>
+
+<script>
+function startVoice() {
+    // Check browser support
+    if (!('webkitSpeechRecognition' in window)) {
+        alert("Your browser does not support voice input");
+        return;
+    }
+
+    const recognition = new webkitSpeechRecognition();
+    recognition.lang = "en-IN"; // Indian English
+    recognition.start();
+
+    recognition.onresult = function(event) {
+        const speechText = event.results[0][0].transcript;
+        document.getElementById("message").value = speechText;
+    };
+
+    recognition.onerror = function() {
+        alert("Voice recognition error");
+    };
+}
+</script>
+
+</body>
+</html>
