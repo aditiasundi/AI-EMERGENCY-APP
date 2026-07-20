@@ -47,7 +47,3 @@ The app will start in debug mode at `http://127.0.0.1:5000/`.
 ## ⚠️ Disclaimer
 
 This is a basic keyword-matching demo and **not a substitute for real emergency services or medical/mental health support**. It does not use any form of natural language understanding and can easily miss or misclassify messages. Do not rely on this app in an actual emergency — always contact local emergency services directly.
-
-## License
-
-Add a license of your choice (e.g., MIT) here.
